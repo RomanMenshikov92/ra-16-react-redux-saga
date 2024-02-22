@@ -1,46 +1,102 @@
-# Getting Started with Create React App
+# Redux Saga
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/m11nngqlqotllv70?svg=true)](https://ci.appveyor.com/project/RomanMenshikov92/ra-16-react-redux-toolkit)
 
-## Available Scripts
+[![Pages build status](https://github.com/RomanMenshikov92/ra-16-react-redux-toolkit/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/RomanMenshikov92/ra-16-react-redux-toolkit/actions/workflows/pages/pages-build-deployment)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## [GutHub Pages](https://romanmenshikov92.github.io/ra-16-react-redux-toolkit/) -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Необходимо выполнить и предоставить на проверку следующие задачи:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<details>
+<summary>1. Поиск</summary>
 
-### `npm test`
+# Поиск
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Взяв за основу проект, рассмотренный на лекции, доработайте его либо напишите с нуля:
 
-### `npm run build`
+При пустой форме ввода список не отображается, в state он должен быть пустым.
+Выводится сообщение: «Type something to search...».
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+</details>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<details>
+<summary>2. Список и детали</summary>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Список и детали
 
-### `npm run eject`
+Напишите проект, использующий React Router и Redux Observable, который удовлетворяет следующим условиям:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+На главной странице показывается список услуг, редактирование не нужно, достаточно просто ссылок — данные загружаются методом GET на http://localhost:7070/api/services.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+При переходе по ссылке (/:id/details), загружаются детали услуги — GET на http://locahost:7070/api/services/:id.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+При загрузке должен отображаться индикатор загрузки, что на странице списка, что на странице деталей:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![](./res/spinner.png)
 
-## Learn More
+При ошибке должно показываться сообщение об ошибке и кнопка «Повторить запрос», при нажатии на которую осуществляется попытка снова выполнить запрос с индикатором загрузки и т. д.:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![](./res/retry.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Готовый бэкенд расположен в каталоге `backend`.
+
+</details>
+
+<details>
+<summary>3. Лента новостей</summary>
+
+# Лента новостей
+
+Вам необходимо реализовать некий аналог подгрузки новостей ВКонтакте.
+
+При загрузке страницы грузятся первые пять новостей. На картинке только две, чтобы уместилось:
+
+![](./res/load-more.png)
+
+При нажатии на кнопку «К предыдущим записям» происходит дозагрузка ещё пять:
+
+![](./res/loading.png)
+
+При возникновении ошибок пользователь не уведомляется, а происходят повторные попытки дозагрузки каждые 3 секунды.
+
+При исчерпании новостей сервер вернёт пустой массив, либо количество элементов в массиве будет меньше пяти, снизу под карточками не отображаются ни кнопки, ни индикатор загрузки:
+
+![](./res/finish.png)
+
+Для первоначальной загрузки новостей используйте следующий запрос:
+GET http://localhost:7070/api/news.
+
+Для загрузки новостей, начиная с определённой, используйте следующий запрос, где X — ID последней загруженной новости:
+GET http://localhost:7070/api/news?lastSeenId=X.
+
+Серверная часть расположена в каталоге `backend`.
+
+Убедитесь, что вы правильно парсите реальные данные и максимально точно отображаете вид карточек.
+
+Как минимум должны отображаться:
+1. Время в формате день, месяц и часы: минуты.
+1. Текст.
+1. Количество лайков.
+1. Количество комментариев.
+1. Количество репостов.
+1. Количество просмотров.
+
+Если научитесь отображать ещё и картинки со ссылками — будет супер!
+
+</details>
+
+#### Альтернативный способ создания приложения React с использованием тулинга Vite
+
+Приложение также можно создать используя инструмент Vite.
+Документация по созданию приложения [React](https://vitejs.dev/guide/).
+
+1. Откройте терминал и пропишите следующую команду: `yarn create vite my-app --template react`,
+   либо `yarn create vite my-app --template react-ts`, если
+   нужен шаблон с TypeScript. Эта команда создаст настроенный
+   шаблонный проект.
+2. Откройте созданный проект в своей IDE.
+3. Установите зависимости.
+4. Готово. Чтобы запустить приложение, введите команду: `yarn dev`(либо `npm run dev`).
