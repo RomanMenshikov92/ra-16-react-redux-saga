@@ -1,12 +1,12 @@
 # Redux Saga
 
-<!-- [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/m11nngqlqotllv70?svg=true)](https://ci.appveyor.com/project/RomanMenshikov92/ra-16-react-redux-toolkit)
+[![Appveyor Build status](https://ci.appveyor.com/api/projects/status/dqgjexl42kr0uo6i?svg=true)](https://ci.appveyor.com/project/RomanMenshikov92/ra-16-react-redux-saga)
 
-[![Pages build status](https://github.com/RomanMenshikov92/ra-16-react-redux-toolkit/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/RomanMenshikov92/ra-16-react-redux-toolkit/actions/workflows/pages/pages-build-deployment)
+[![Pages build status](https://github.com/RomanMenshikov92/ra-16-react-redux-saga/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/RomanMenshikov92/ra-16-react-redux-saga/actions/workflows/pages/pages-build-deployment)
 
 ---
 
-## [GutHub Pages](https://romanmenshikov92.github.io/ra-16-react-redux-saga/) -->
+## [GutHub Pages](https://romanmenshikov92.github.io/ra-16-react-redux-saga/)
 
 Необходимо выполнить и предоставить на проверку следующие задачи:
 
