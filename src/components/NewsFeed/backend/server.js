@@ -14,7 +14,7 @@ app.use(
   })
 );
 app.use(function (req, res, next) {
-  res.setHeader('Content-Type', 'application/json');
+  res.setHeader("Content-Type", "application/json");
   next();
 });
 
@@ -37,32 +37,24 @@ function fortune(res, body = null, status = 200) {
 app.get("/api/news", (req, res) => {
   const { lastSeenId } = req.query;
   if (lastSeenId === undefined) {
-    return fortune(res, news.slice(0, limit)).catch(() =>
-      res.status(500).send("Something went wrong")
-    );
+    return fortune(res, news.slice(0, limit)).catch(() => res.status(500).send("Something went wrong"));
   }
 
   const id = Number(lastSeenId);
   if (Number.isNaN(id)) {
     const status = 400;
-    return fortune(res, null, status).catch(() =>
-      res.status(500).send("Something went wrong")
-    );
+    return fortune(res, null, status).catch(() => res.status(500).send("Something went wrong"));
   }
 
   const index = news.findIndex((o) => o.id === id);
   if (index === -1) {
     const status = 404;
-    return fortune(res, null, status).catch(() =>
-      res.status(500).send("Something went wrong")
-    );
+    return fortune(res, null, status).catch(() => res.status(500).send("Something went wrong"));
   }
 
   const body = news.slice(index + 1, index + 1 + limit);
-  return fortune(res, body).catch(() =>
-    res.status(500).send("Something went wrong")
-  );
+  return fortune(res, body).catch(() => res.status(500).send("Something went wrong"));
 });
 
-const port = process.env.PORT || 7070;
+const port = process.env.PORT || 7090;
 app.listen(port, () => console.log(`The server is running on port ${port}.`));

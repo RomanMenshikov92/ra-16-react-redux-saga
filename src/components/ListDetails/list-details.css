@@ -7,3 +7,100 @@
   padding: 10px;
   width: 700px;
 }
+.list-details__main {
+  border-top: 1px solid black;
+}
+.list-details__nav-menu {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(63, 218, 32);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  transition: background-color, color 0.3s ease;
+  -webkit-transition: background-color, color 0.3s ease;
+  -moz-transition: background-color, color 0.3s ease;
+  -ms-transition: background-color, color 0.3s ease;
+  -o-transition: background-color, color 0.3s ease;
+}
+.list-details__nav-menu:hover {
+  background-color: rgb(23, 78, 12);
+  color: white;
+}
+.list-details__title {
+  margin-top: 20px;
+  text-align: center;
+  color: rgb(116, 116, 116);
+}
+.list-details__error {
+  width: 100%;
+  margin-top: 10px;
+  border: 1px solid red;
+  background-color: red;
+  color: white;
+  padding: 15px;
+}
+.list-details__error-btn {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid white;
+  border-radius: 15px;
+  color: white;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  transition: background-color, color 0.3s ease;
+}
+.list-details__error-btn:hover {
+  background-color: white;
+  color: red;
+}
+.list-details__loading {
+  width: 100%;
+  margin-top: 10px;
+  border: 1px solid rgb(0, 81, 255);
+  padding: 15px;
+  text-align: center;
+  color: rgb(0, 81, 255);
+}
+.list-details__list {
+  padding: 10px;
+}
+.list-details__item {
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  -webkit-transition: background-color 0.3s ease;
+  -moz-transition: background-color 0.3s ease;
+  -ms-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+}
+.list-details__item:hover {
+  background-color: lightgreen;
+}
+.list-details__details-number {
+  text-align: center;
+  margin: 5px 0;
+}
+.list-details__details-span {
+  color: gray;
+}
+.list-details__details-btn {
+  display: block;
+  margin-left: auto;
+  margin-top: 5px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  transition: background-color, color 0.3s ease;
+}
+.list-details__details-btn:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+}

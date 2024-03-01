@@ -2,7 +2,7 @@ import { Reducer, combineReducers } from 'redux';
 import { Service } from '../types/types';
 import { ActionTypes } from './action';
 
-const servicesReducer = (state: Service[] = [], action: any) => {
+const servicesReducer: Reducer<Service[], { type: string, payload: Service[] }> = (state = [], action)  => {
   switch (action.type) {
     case ActionTypes.FETCH_SERVICES_SUCCESS:
       return action.payload;
@@ -11,7 +11,7 @@ const servicesReducer = (state: Service[] = [], action: any) => {
   }
 };
 
-const selectedServiceReducer = (state: Service | null = null, action: any) => {
+const selectedServiceReducer: Reducer<Service | null, { type: string, payload: Service }> = (state = null, action)  => {
   switch (action.type) {
     case ActionTypes.FETCH_SERVICE_DETAILS_SUCCESS:
       return action.payload;
@@ -20,7 +20,7 @@ const selectedServiceReducer = (state: Service | null = null, action: any) => {
   }
 };
 
-const loadingReducer = (state: boolean = false, action: any) => {
+const loadingReducer: Reducer<boolean, { type: string }> = (state = false, action) => {
   switch (action.type) {
     case ActionTypes.FETCH_SERVICES:
     case ActionTypes.FETCH_SERVICE_DETAILS:
@@ -35,7 +35,7 @@ const loadingReducer = (state: boolean = false, action: any) => {
   }
 };
 
-const errorReducer = (state: any = null, action: any) => {
+const errorReducer: Reducer<string | null, { type: string, payload: string }> = (state = null, action) => {
   switch (action.type) {
     case ActionTypes.FETCH_SERVICES_FAILURE:
     case ActionTypes.FETCH_SERVICE_DETAILS_FAILURE:

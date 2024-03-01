@@ -1,4 +1,4 @@
-const apiUrl: string = process.env.REACT_APP_API_URL || "";
+const apiUrl: string = process.env.REACT_APP_API_URL_SEARCH || "";
 
 export const searchSkills = async (search: string): Promise<string> => {
   const params = new URLSearchParams({ q: search });

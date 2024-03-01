@@ -6,7 +6,7 @@
 
 ---
 
-## [GutHub Pages](https://romanmenshikov92.github.io/ra-16-react-redux-toolkit/) -->
+## [GutHub Pages](https://romanmenshikov92.github.io/ra-16-react-redux-saga/) -->
 
 Необходимо выполнить и предоставить на проверку следующие задачи:
 

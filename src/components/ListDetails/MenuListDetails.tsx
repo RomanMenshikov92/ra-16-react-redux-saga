@@ -18,9 +18,6 @@ export const MenuListDetails: React.FC = () => {
           Выйти из списка
         </NavLink>
       )}
-      {/* <NavLink className={activeLink} to="/ra-16-react-redux-saga/list-details/:id/details">
-        Детали
-      </NavLink> */}
     </nav>
   );
 };

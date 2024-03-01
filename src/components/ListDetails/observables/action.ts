@@ -1,3 +1,5 @@
+import { Service } from "../types/types";
+
 export const ActionTypes = {
   FETCH_SERVICES: 'FETCH_SERVICES',
   FETCH_SERVICES_SUCCESS: 'FETCH_SERVICES_SUCCESS',
@@ -16,22 +18,22 @@ export const fetchServiceDetails = (id: number) => ({
   payload: id,
 });
 
-export const fetchServicesSuccess = (services: any) => ({
+export const fetchServicesSuccess = (services: Service[]) => ({
   type: ActionTypes.FETCH_SERVICES_SUCCESS,
   payload: services,
 });
 
-export const fetchServicesFailure = (error: any) => ({
+export const fetchServicesFailure = (error: string) => ({
   type: ActionTypes.FETCH_SERVICES_FAILURE,
   payload: error,
 });
 
-export const fetchServiceDetailsSuccess = (service: any) => ({
+export const fetchServiceDetailsSuccess = (service: Service) => ({
   type: ActionTypes.FETCH_SERVICE_DETAILS_SUCCESS,
   payload: service,
 });
 
-export const fetchServiceDetailsFailure = (error: any) => ({
+export const fetchServiceDetailsFailure = (error: string) => ({
   type: ActionTypes.FETCH_SERVICE_DETAILS_FAILURE,
   payload: error,
 });

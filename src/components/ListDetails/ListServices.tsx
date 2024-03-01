@@ -1,44 +1,54 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./types/types";
-import { fetchServices } from "./observables/action";
+import { RootState, Service } from "./types/types";
+import { fetchServices, fetchServiceDetails } from "./observables/action";
 
 export const ListServices: React.FC = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const services = useSelector((state: RootState) => state.services);
   const loading = useSelector((state: RootState) => state.loading);
   const error = useSelector((state: RootState) => state.error);
-
-  const [retrying, setRetrying] = useState(false);
+  const [retrying, setRetrying] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!services && !loading && !error && !retrying) {
+    if (!services.length && !loading && !error && !retrying) {
       dispatch(fetchServices());
     }
-  }, [dispatch, services, loading, error, retrying]);
+  }, [services, loading, error, retrying, dispatch]);
 
-  const handleRetry = () => {
+  const handleRetry = (): void => {
     setRetrying(true);
     dispatch(fetchServices());
+  };
+
+  const handleServiceDetails = (id: number): void => {
+    dispatch(fetchServiceDetails(id));
+    navigate(`/ra-16-react-redux-saga/list-details/${id}/details`);
   };
 
   return (
     <>
       <h2 className="list-details__title">Список сервисов:</h2>
-      {loading && <div>Loading...</div>}
+      {loading && <div className="list-details__loading">Идет загрузка...</div>}
       {error && (
-        <div>
-          Error: {error}
-          <button onClick={handleRetry}>Повторить запрос</button>
+        <div className="list-details__error">
+          Произошла ошибка!
+          <button className="list-details__error-btn btn-reset" onClick={handleRetry}>
+            Повторить запрос
+          </button>
         </div>
       )}
-      {services &&
-        services.map((service) => (
-          <div key={service.id}>
-            <Link to={`/ra-16-react-redux-saga/list-details/${service.id}/details`}>{service.name}</Link>
-          </div>
-        ))}
+      {services.length > 0 && (
+        <ul className="list-details__list list-reset">
+          {services.map((service: Service) => (
+            <li className="list-details__item" key={service.id} onClick={() => handleServiceDetails(service.id)}>
+              {service.id}. {service.name}
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 };
